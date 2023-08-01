@@ -1,0 +1,18 @@
+[Unit]
+Description=GnuPG cryptographic agent and passphrase cache
+Documentation=man:gpg-agent(1)
+BindsTo=sway-session.target
+
+# Writing a custom unit for gpg-agent is necessary because the
+# upstream service *requires* its sockets to be enabled for the agent to
+# function properly. Since we're binding to sway-session.target, this
+# isn't desirable since there isn't an obvious way to only start the
+# socket units when sway-session.target is started.
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/gpg-agent --daemon
+ExecReload=/usr/bin/gpgconf --reload gpg-agent
+
+[Install]
+WantedBy=sway-session.target

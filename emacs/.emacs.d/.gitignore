@@ -1,0 +1,11 @@
+anaconda-mode/
+auto-save-list/
+elpa/
+eshell/
+straight/
+themes/
+vimish-fold/
+url/
+session.**
+ido**
+tramp**

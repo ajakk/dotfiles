@@ -1,0 +1,127 @@
+set t_Co=256
+
+" Center cursor vertically in bufferDone!
+set scrolloff=999
+
+" Niceish folding
+set foldmethod=indent
+
+" Line numbers
+set relativenumber
+
+" Use modeline settings
+set modeline
+
+" Vim files should all go in ~/.vim
+set viminfo+=n~/.vim/viminfo
+
+" Use common sense (shell-like) tab completion with filenames
+set wildmode=longest,list,full
+set wildmenu
+
+" Look for tags in any parent dir
+set tags=tags;/
+
+" Open pane with manpage with K
+runtime ftplugin/man.vim
+set keywordprg=:Man
+
+set splitbelow
+set incsearch
+
+set backupdir=~/.vim
+set directory=~/.vim/swp//
+
+" F2 to sort words in selection from visual mode
+vnoremap <F2> d:execute 'normal a' . join(sort(split(getreg('"'))), ' ')<CR>
+
+inoremap jk <esc>
+
+" .p to paste on forward newline
+nmap .p :pu<CR>
+
+" Easy making
+nmap mm :!make<CR>
+nmap mw :!make CFLAGS="-Wall -Wextra -pedantic"<CR>
+nmap mc :!make clean<CR>
+
+nmap <silent> <C-e> <Plug>(ale_next_wrap)
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Theme
+Plug 'fatih/molokai'
+
+" Git
+Plug 'jreybert/vimagit'
+Plug 'airblade/vim-gitgutter'
+
+" Show trailing whitespace
+Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+
+Plug 'dense-analysis/ale'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'preservim/nerdtree'
+
+" Automatically open multiple files in the same window
+Plug 'auxiliary/vim-layout'
+
+Plug 'chrisbra/csv.vim'
+
+Plug 'Chiel92/vim-autoformat'
+
+Plug 'wikitopian/hardmode'
+Plug '0x0dea/vim-molasses'
+
+Plug 'https://anongit.gentoo.org/git/proj/eselect-syntax.git'
+
+" JS tags
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+call plug#end()
+
+"
+" Plugin configuration
+"
+let g:molasses_wait = 500
+
+let g:easytags_suppress_ctags_warning = 1
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_highlighting_cache = 1
+let g:airline_extensions = []
+
+" ALE
+let g:ale_linters = {'c' : ['clang']}
+let g:ale_fixers = {'python' : ['remove_trailing_lines', 'trim_whitespace', 'autopep8']}
+let g:ale_c_clang_options = '-std=c11 -Wall -I/usr/include/libxml2'
+
+" NERDTree
+let NERDTreeIgnore = ['\.o$', '\.a$']
+
+" Handle CSV files with csv.vim
+if exists("did_load_csvfiletype")
+  finish
+endif
+let did_load_csvfiletype=1
+
+augroup filetypedetect
+  au! BufRead,BufNewFile *.csv,*.dat	setfiletype csv
+augroup END
+
+" Set theme
+colorscheme molokai

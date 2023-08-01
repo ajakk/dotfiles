@@ -1,0 +1,7 @@
+set from = "$realname <jchelmertt3@gmail.com>"
+set folder = "~/.mail/gmail"
+unset record
+
+set smtp_url = "smtp://jchelmertt3@smtp.gmail.com:587/"
+set message_id_format = "<%z@gmail.com>"
+send-hook '~A' 'set smtp_pass = "`pass Email/jchelmertt3@gmail.com-app`"'

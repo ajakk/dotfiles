@@ -1,0 +1,8 @@
+set crypt_use_gpgme
+set crypt_autosign = yes
+set crypt_verify_sig = yes
+set crypt_replysign = yes
+set crypt_autosign = yes
+
+set pgp_autosign
+set pgp_default_key="945B8F7A7063E8DBCD2E80015CFD1D01E07E2338"

@@ -1,0 +1,195 @@
+#!/usr/bin/env zsh
+
+try_calendar() {
+	[[ -f $(which calendar) ]] || return
+
+	lastreadfile=~/.calendar/last-read
+	lastread=$(cat ${lastreadfile} 2>/dev/null)
+
+	# Continue only if stored date doesn't match actual date
+	[[ ${lastread} == $(date --iso-8601) ]] && return
+
+	output=$(calendar)
+
+	# If there's nothing in the calendar output for today, do nothing
+	[[ -n ${output} ]] || return
+
+	echo ${output}
+	echo "Disable calendar output for today with \`cal-viewed\`"
+}
+
+cal-viewed() {
+	date --iso-8601 > ~/.calendar/last-read
+}
+
+# Download and embed as much as we can
+_ytdl() {
+	yt-dlp --write-description --write-info-json --write-annotations \
+	  --write-sub --all-subs --convert-subs srt --embed-subs \
+	  --add-metadata --write-thumbnail --embed-thumbnail \
+	  --merge-output-format mkv \
+	  $@
+}
+
+# Sanitize title for filesystem
+_ytdl_safe() {
+	_ytdl --output "%(stitle)s.%(ext)s" $@
+}
+
+# Proxy _ytdl through local Tor server
+_tor_ytdl() {
+	_ytdl --proxy "socks5://127.0.0.1:9050" $@
+}
+
+# Both of the previous
+_tor_ytdl_safe() {
+	_ytdl_safe --proxy "socks5://127.0.0.1:9050" $@
+}
+
+base16() {
+	if ! [ -t 0]; then
+		read input
+	else
+		input=$1
+	fi
+
+	echo "ibase=10;obase=16;${1}" | bc
+}
+
+strlen() {
+	if ! [ -t 0 ]; then
+		read input
+	else
+		input=$1
+	fi
+
+	echo ${#input}
+}
+
+stopwatch() {
+	date1=`date +%s`;
+	while true; do
+		echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
+	done
+}
+
+eedit() {
+	file=$(equery w -m $1)
+
+	# equery stdout should be empty in case of an error
+	[[ ${file} ]] || return
+
+	$EDITOR $(equery w -m $1)
+}
+
+txturl() {
+	if [[ $1 == *//dpaste.com/* && $1 != *.txt ]]; then
+		output=$(echo $1 | sed 's/$/.txt/')
+	elif [[ $1 == *//bpaste.com/* && $1 != *raw* ]]; then
+		output=$(echo $1 | sed 's/.com/.com\/raw/')
+	elif [[ $1 == *//pastebin.com/* && $1 != *raw* ]]; then
+		output=$(echo $1 | sed 's/.com\//.com\/raw\//')
+	elif [[ $1 == *//paste.debian.net/* && $1 != *plain* ]]; then
+		output=$(echo $1 | sed 's/.net\//.net\/plain\//')
+	elif [[ $1 == *//paste.ubuntu.com/p/* && $1 != *plain* ]]; then
+		output=$(echo $1 | sed 's/$/\/plain\//')
+	elif [[ $1 == *//paste.centos.org/view/* && $1 != *plain* ]]; then
+		output=$(echo $1 | sed 's/view\//view\/raw\//')
+	elif [[ $1 == */bpa.st/* && $1 != *raw* ]]; then
+		output=$(echo $1 | sed 's/bpa.st\//bpa.st\/raw\//')
+	elif [[ $1 == *irccloud.com/* && $1 != *raw* ]]; then
+		output=$(echo $1 | sed 's/pastebin\//pastebin\/raw\//')
+	else
+		output=$1
+	fi
+
+	if [[ ${output} != *dpaste* ]]; then
+		echo ${output} | sed 's/http:/https:/'
+	else
+		echo ${output}
+	fi
+}
+
+urlview() {
+	$EDITOR $(txturl $1)
+}
+
+cve-urls-open() {
+	while read line; do
+		firefox -new-tab $(echo ${line} | sed 's/.*<//g;s/>$//')
+	done < <(xclip -o)
+}
+
+bscve() {
+	for cve in $@; do
+		output=$(bugz --columns 9999 --quiet search --alias "${cve}" -s all)
+		if [[ -z "${output}" ]]; then
+			echo "No bug for ${cve}"
+		else
+			echo "${output}"
+		fi
+	done
+}
+
+ggc() {
+	# Gentoo git commit
+	repoman manifest || return
+	pkgcheck scan || return
+	repoman -dx commit || return
+}
+
+revdeps() {
+	grep "" /var/lib/jake/gentoo/tooling/qa-scripts/depindex/*/"${1}" |
+		sed 's/[^:]*://' | sort -u
+}
+
+alias ytdl='_ytdl --output "%(title)s/%(title)s.%(ext)s"'
+alias torytdl='_tor_ytdl --output "%(title)s/%(title)s.%(ext)s"'
+alias torsytdl='_tor_ytdl_safe'
+
+alias emacs='emacs -nw'
+alias ncmpcpp="ALL_PROXY='127.0.0.1:8118' ncmpcpp"
+alias b='buku --suggest --np'
+alias di='docker image'
+alias dc='docker container'
+alias mail='mail -f /var/spool/mail/jake'
+alias tmux='tmux -2'
+alias git='git --no-pager'
+alias mpv='mpv --no-audio-display'
+alias beep='paplay --volume=32767 /usr/share/sounds/freedesktop/stereo/bell.oga'
+alias pwndbg='pwndbg -ex init-pwndbg'
+
+alias urlencode='python3 -c "import sys, urllib.parse as ul; print(ul.unquote_plus(sys.argv[1]))"'
+alias urlencode='python3 -c "import sys, urllib.parse as ul; print(ul.quote_plus(sys.argv[1]))"'
+
+alias bs='bugz -q search'
+alias bsa='bugz -q search -s all'
+alias bss='bugz -q search -a security@gentoo.org'
+alias bssa='bugz -q search -a security@gentoo.org -s all'
+alias bswr='bugz -q search -a bug-wranglers@gentoo.org'
+
+alias pblame='pquery --blame'
+
+qwhich() {
+	qfile $(which $1)
+}
+
+bslink() {
+	while read line; do
+		echo "https://bugs.gentoo.org/${line}"
+	done < "${1:-/dev/stdin}"
+}
+
+qr() {
+	qrencode $1 -o - | feh -
+}
+
+randchars() {
+    if [[ -z "${1}" ]]; then echo "Integer argument needed"; return; fi
+    head /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w ${1} | head -n 1
+}
+
+venv() {
+	python -m venv venv
+	source venv/bin/activate
+}

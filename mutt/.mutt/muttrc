@@ -1,0 +1,127 @@
+#
+# .muttrc
+# ================ IMAP/SMTP ===========================
+
+set mail_check = 60
+set timeout = 30
+
+# ================ Mailbox settings =================
+
+set header_cache = ~/.cache/mutt
+set message_cachedir = ~/.cache/mutt
+set ssl_starttls = yes
+set ssl_force_tls = yes
+alternative_order text/plain text/html
+
+folder-hook "posteo/*" "source ~/.mutt/posteo.muttrc"
+folder-hook "gentoo/*" "source ~/.mutt/gentoo.muttrc"
+
+set mbox_type = Maildir
+
+set spoolfile = ~/.mail/posteo/INBOX
+mailboxes \
+  -label "posteo/Accounts" ~/.mail/posteo/Accounts \
+  -label "posteo/Bills" ~/.mail/posteo/Bills \
+  -label "posteo/Distro Security" "~/.mail/posteo/Security/Distro Security" \
+  -label "posteo/Inbox" ~/.mail/posteo/INBOX \
+  -label "posteo/Software Announce" "~/.mail/posteo/Software Announce" \
+  -label "posteo/Tor" ~/.mail/posteo/Tor \
+  -label "posteo/US-CERT" ~/.mail/posteo/Security/US-CERT \
+  -label "posteo/Wikipedia" ~/.mail/posteo/Wikipedia \
+  -label "posteo/dev" ~/.mail/posteo/dev \
+  -label "posteo/fulldisclosure" ~/.mail/posteo/Security/fulldisclosure \
+  -label "posteo/home" ~/.mail/posteo/home \
+  -label "posteo/lists" ~/.mail/posteo/lists \
+  -label "posteo/systemd-devel" ~/.mail/posteo/systemd-devel
+mailboxes \
+  -label "gentoo/Inbox" ~/.mail/gentoo/INBOX \
+  -label "gentoo/arm" ~/.mail/gentoo/arm \
+  -label "gentoo/bugs" ~/.mail/gentoo/bugs \
+  -label "gentoo/bugs-arm" ~/.mail/gentoo/bugs-arm \
+  -label "gentoo/bugs-containers" ~/.mail/gentoo/bugs-containers \
+  -label "gentoo/bugs-dev-portage" ~/.mail/gentoo/bugs-dev-portage \
+  -label "gentoo/bugs-infra" ~/.mail/gentoo/bugs-infra \
+  -label "gentoo/bugs-security" ~/.mail/gentoo/bugs-security \
+  -label "gentoo/bugs-systemd" ~/.mail/gentoo/bugs-systemd \
+  -label "gentoo/bugs-virt" ~/.mail/gentoo/bugs-virt \
+  -label "gentoo/c-std-porting" ~/.mail/gentoo/c-std-porting \
+  -label "gentoo/containers" ~/.mail/gentoo/containers \
+  -label "gentoo/council" ~/.mail/gentoo/council \
+  -label "gentoo/cve" ~/.mail/gentoo/cve \
+  -label "gentoo/dev-portage" ~/.mail/gentoo/dev-portage \
+  -label "gentoo/emacs-devel" ~/.mail/gentoo/emacs-devel \
+  -label "gentoo/g-announce" ~/.mail/gentoo/g-announce \
+  -label "gentoo/g-core" ~/.mail/gentoo/g-core \
+  -label "gentoo/g-dev" ~/.mail/gentoo/g-dev \
+  -label "gentoo/g-dev-announce" ~/.mail/gentoo/g-dev-announce \
+  -label "gentoo/g-misc" ~/.mail/gentoo/g-misc \
+  -label "gentoo/g-project" ~/.mail/gentoo/g-project \
+  -label "gentoo/gitlab" ~/.mail/gentoo/gitlab \
+  -label "gentoo/glsa" ~/.mail/gentoo/glsa \
+  -label "gentoo/infra" ~/.mail/gentoo/infra \
+  -label "gentoo/infra-alerts" ~/.mail/gentoo/infra-alerts \
+  -label "gentoo/infra-automated" ~/.mail/gentoo/infra-automated \
+  -label "gentoo/infra-commits" ~/.mail/gentoo/infra-commits \
+  -label "gentoo/linux-distros" ~/.mail/gentoo/linux-distros \
+  -label "gentoo/lists" ~/.mail/gentoo/lists \
+  -label "gentoo/oss-security" ~/.mail/gentoo/oss-security \
+  -label "gentoo/packages" ~/.mail/gentoo/packages \
+  -label "gentoo/proxy-maint" ~/.mail/gentoo/proxy-maint \
+  -label "gentoo/qemu-devel" ~/.mail/gentoo/qemu-devel \
+  -label "gentoo/security" ~/.mail/gentoo/security \
+  -label "gentoo/virt" ~/.mail/gentoo/virtualization
+
+# ================  Composition  ====================
+
+set editor = `echo \$EDITOR`
+set edit_headers = yes  # See the headers when editing
+set charset = UTF-8     # value of $LANG; also fallback for send_charset
+
+# Sender, email address, and sign-off line must match
+unset use_domain        # because joe@localhost is just embarrassing
+set realname = "John Helmert III"
+set use_from = yes
+
+# ================ Display ===================
+
+set sort = "threads"
+set sort_aux = last-date-received
+set index_format = "%4C │ %Z [%{%F %H:%M}] %-15.15L │ %s"
+set sort_browser_mailboxes = alpha
+set narrow_tree = yes
+set browser_abbreviate_mailboxes = no
+
+ignore *
+unignore "from " from: sender: date: reply-to: return-path: subject: to: cc: bcc:
+unignore X-Delivered-To
+unignore x-mailer: x-auth x-newsreader: newsgroups: followup-to: mail-followup-to: priority: user-agent:
+unignore resent-from: resent-date: resent-to: resent-sender: resent-reply-to: resent-cc: list-id:
+unignore X-Bugzilla-Reason X-Bugzilla-Watch-Reason X-Bugzilla-Whiteboard
+
+# ============= Sidebar ======================
+
+set sidebar_visible = yes
+set sidebar_sort_method = alpha
+set sidebar_divider_char = '│'
+set sidebar_format = "%B%* %N/%S"
+set sidebar_width = 35
+
+# ============== Other =======================
+
+set pipe_split = yes
+set pipe_decode = yes
+
+set confirmappend = no
+set sleep_time = 0
+set fast_reply = yes
+set include = yes
+set pager_index_lines=20
+unset mark_old
+
+set mail_check_stats
+#set new_mail_command = "notify-send 'New Email' '%b unread mailboxes, %n new messages, %u unread.' &"
+
+source ~/.mutt/bindings.muttrc
+source ~/.mutt/gpg.muttrc
+source ~/.mutt/vombatidae.muttrc
+source ~/.mutt/posteo.muttrc

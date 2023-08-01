@@ -1,0 +1,10 @@
+set from = "$realname <jchelmert3@posteo.net>"
+
+set folder = "~/.mail/posteo"
+set record = "~/.mail/posteo/Sent"
+
+set smtp_url = "smtp://jchelmert3@posteo.net@posteo.de:587/"
+set message_id_format = "<%z@posteo.net>"
+
+# doesn't work when restoring postponed
+send-hook '~A' 'set smtp_pass = "`pass Email/posteo.de/jchelmert3@posteo.net`"'

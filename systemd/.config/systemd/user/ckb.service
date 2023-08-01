@@ -1,0 +1,13 @@
+[Unit]
+Description=Corsair K65/K70/K95 Driver
+Documentation=https://github.com/ckb-next/ckb-next
+BindsTo=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ckb-next -b
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=sway-session.target

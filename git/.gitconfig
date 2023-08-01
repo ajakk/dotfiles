@@ -1,0 +1,32 @@
+[user]
+	email = jchelmert3@posteo.net
+	name = John Helmert III
+	signingKey = 321BDC9F0AB98ED0B3D2746DA05EADBE69AFC9B5
+[commit]
+	gpgSign = true
+[alias]
+	merge-log = "!f() { git log \"$1^..$1\" \"$@\"; }; f"
+	fixes = show -s --pretty='format:Fixes: %h (\"%s\")'
+[oh-my-zsh]
+	hide-dirty = 1
+[pull]
+	rebase = true
+[push]
+	default = current
+	gpgSign = if-asked
+[init]
+	defaultBranch = main
+[includeIf "gitdir:~/gentoo/"]
+	# TODO: doesn't work properly
+	path = ~/gentoo/.gitconfig
+[include]
+	path = ~/.gitconfig-secrets
+[sendemail]
+	confirm = cc
+	smtpEncryption = tls
+	smtpServer = smtp.gentoo.org
+	smtpUser = ajak@gentoo.org
+	smtpServerPort = 587
+	annotate = yes
+[rebase]
+	autoStash = true

@@ -1,0 +1,7 @@
+set from = "$realname <ajak@gentoo.org>"
+set folder = "~/.mail/gentoo"
+set record = "~/.mail/gentoo/Sent"
+
+set smtp_url = "smtp://ajak@mail.gentoo.org:587"
+set message_id_format = "<%z@gentoo.org>"
+send-hook '~A' 'set smtp_pass = "`pass Gentoo/gentoo.org`"'

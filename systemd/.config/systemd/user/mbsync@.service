@@ -1,0 +1,9 @@
+[Unit]
+Description=Run mbsync for %i
+
+[Service]
+Type=oneshot
+ExecStart=mbsync -c %h/.%i.mbsyncrc %i
+
+[Install]
+WantedBy=multi-user.target
