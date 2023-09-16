@@ -81,7 +81,7 @@ macro index \'\' "<limit>~A<enter>"       "reset all limits"
 
 # If +spam doesn't exist, mutt will create it for us.
 macro index .s "<save-message>+spam<enter>" "mark message as spam"
-macro index .f "<enter-command>unset pgp_autosign<enter><enter-command>set mime_forward<enter><forward-message>spamreport@posteo.de<enter><enter-command>unset mime_forward<enter><enter-command>set pgp_autosign<enter><save-message>+Spam<enter>" "forward spam to posteo, mark as spam"
+macro index .f "<enter-command>unset pgp_autosign<enter><enter-command>set mime_forward<enter><forward-message>spamreport@posteo.de<enter><enter-command>unset mime_forward<enter><send-message><enter-command>set pgp_autosign<enter><save-message>+Spam<enter>" "forward spam to posteo, mark as spam"
 
 macro index o "<save-message>+old<enter>"
 

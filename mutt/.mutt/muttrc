@@ -92,7 +92,7 @@ set narrow_tree = yes
 set browser_abbreviate_mailboxes = no
 
 ignore *
-unignore "from " from: sender: date: reply-to: return-path: subject: to: cc: bcc:
+unignore "from " from: sender: date: reply-to: return-path: subject: to: cc: bcc: message-id:
 unignore X-Delivered-To
 unignore x-mailer: x-auth x-newsreader: newsgroups: followup-to: mail-followup-to: priority: user-agent:
 unignore resent-from: resent-date: resent-to: resent-sender: resent-reply-to: resent-cc: list-id:
