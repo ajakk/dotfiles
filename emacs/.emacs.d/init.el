@@ -10,7 +10,7 @@
 (require 'ui)
 
 (defun c-lineup-arglist-tabs-only (ignored)
-  "Line up argument lists by tabs, not spaces"
+  "IGNORED Line up argument lists by tabs, not spaces."
   (let* ((anchor (c-langelem-pos c-syntactic-element))
          (column (c-langelem-2nd-pos c-syntactic-element))
          (offset (- (1+ column) anchor))
@@ -164,7 +164,7 @@
       (desktop-read)
       (remove-hook 'after-make-frame-functions 'restore-desktop)))
   (add-hook 'after-make-frame-functions 'restore-desktop))
-(savehist-mode 1)
+(setq savehist-mode t)
 
 (setq comp-deferred-compilation t)
 (setq package-native-compile t)
@@ -192,6 +192,7 @@
 
 ;; no more '*~' files
 (setq-default make-backup-files nil)
+(setq-default backup-inhibited t)
 
 (require 'bindings)
 
