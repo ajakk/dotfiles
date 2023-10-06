@@ -16,3 +16,4 @@ emacs/.emacs.d/history
 emacs/.emacs.d/recentf
 emacs/.emacs.d/tabsession.el
 emacs/.emacs.d/transient/history.el
+emacs/.emacs.d/.cache
