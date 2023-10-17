@@ -32,6 +32,8 @@ mailboxes \
   -label "posteo/fulldisclosure" ~/.mail/posteo/Security/fulldisclosure \
   -label "posteo/home" ~/.mail/posteo/home \
   -label "posteo/lists" ~/.mail/posteo/lists \
+  -label "posteo/Money" ~/.mail/posteo/Money \
+  -label "posteo/Shopping" ~/.mail/posteo/Shopping\
   -label "posteo/systemd-devel" ~/.mail/posteo/systemd-devel
 mailboxes \
   -label "gentoo/Inbox" ~/.mail/gentoo/INBOX \
