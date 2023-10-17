@@ -24,6 +24,8 @@ mailboxes \
   -label "posteo/Bills" ~/.mail/posteo/Bills \
   -label "posteo/Distro Security" "~/.mail/posteo/Security/Distro Security" \
   -label "posteo/Inbox" ~/.mail/posteo/INBOX \
+  -label "posteo/Money" ~/.mail/posteo/Money \
+  -label "posteo/Shopping" ~/.mail/posteo/Shopping\
   -label "posteo/Software Announce" "~/.mail/posteo/Software Announce" \
   -label "posteo/Tor" ~/.mail/posteo/Tor \
   -label "posteo/US-CERT" ~/.mail/posteo/Security/US-CERT \
@@ -32,8 +34,6 @@ mailboxes \
   -label "posteo/fulldisclosure" ~/.mail/posteo/Security/fulldisclosure \
   -label "posteo/home" ~/.mail/posteo/home \
   -label "posteo/lists" ~/.mail/posteo/lists \
-  -label "posteo/Money" ~/.mail/posteo/Money \
-  -label "posteo/Shopping" ~/.mail/posteo/Shopping\
   -label "posteo/systemd-devel" ~/.mail/posteo/systemd-devel
 mailboxes \
   -label "gentoo/Inbox" ~/.mail/gentoo/INBOX \
