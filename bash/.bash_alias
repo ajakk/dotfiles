@@ -129,7 +129,7 @@ qwhich() {
 }
 
 bs() {
-	bugz --columns 9999 -q search "${@}" | sed 's:^:https\://bugs.gentoo.org/:'
+	bugz --columns 9999 -q search "${@}" | sed "/^[0-9]\{6,\}/s/^/https:\/\/bugs.gentoo.org\//"
 }
 
 qr() {
