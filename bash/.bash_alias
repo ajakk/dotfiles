@@ -113,17 +113,6 @@ cve-urls-open() {
 	done < <(xclip -o)
 }
 
-bscve() {
-	for cve in $@; do
-		output=$(bugz --columns 9999 --quiet search --alias "${cve}" -s all)
-		if [[ -z "${output}" ]]; then
-			echo "No bug for ${cve}"
-		else
-			echo "https://bugs.gentoo.org/${output}"
-		fi
-	done
-}
-
 cves() {
 	while read line; do
 		grep -o 'CVE-[0-9]\{4\}-[0-9]\{4,5\}' <(echo $line)
