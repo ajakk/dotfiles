@@ -7,7 +7,7 @@ irssi/.irssi/logs
 mutt/.mutt/hcache-lock
 ncmpcpp/.ncmpcpp/error.log
 ssh/.ssh/*
-systemd/.config/system/user/*wants/
+systemd/.config/user/*wants/
 vim/.vim/*
 emacs/.emacs.d/.emacs.desktop
 emacs/.emacs.d/.emacs.desktop.lock
