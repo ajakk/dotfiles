@@ -115,8 +115,8 @@ cve-urls-open() {
 
 cves() {
 	while read line; do
-		grep -o 'CVE-[0-9]\{4\}-[0-9]\{4,5\}' <(echo $line)
-	done | sort -u | xargs | sed 's/ /, /g'
+		grep -o 'CVE-[0-9]\{4\}-[0-9]*' <(echo "${line}")
+	done | sort -u | xargs | sed 's/,//g'
 }
 
 revdeps() {
