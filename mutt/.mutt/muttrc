@@ -25,6 +25,7 @@ mailboxes \
   -label "posteo/Distro Security" "~/.mail/posteo/Security/Distro Security" \
   -label "posteo/Inbox" ~/.mail/posteo/INBOX \
   -label "posteo/Money" ~/.mail/posteo/Money \
+  -label "posteo/Newsletters" ~/.mail/posteo/Newsletters \
   -label "posteo/Shopping" ~/.mail/posteo/Shopping\
   -label "posteo/Software Announce" "~/.mail/posteo/Software Announce" \
   -label "posteo/Tor" ~/.mail/posteo/Tor \
