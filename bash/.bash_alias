@@ -2,6 +2,7 @@
 
 try_calendar() {
 	[[ -f $(which calendar 2>/dev/null) ]] || return
+	[[ -f ~/.calendar/calendar ]] || return
 
 	lastreadfile=~/.calendar/last-read
 	lastread=$(cat ${lastreadfile} 2>/dev/null)
