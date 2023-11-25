@@ -88,6 +88,6 @@ macro index o "<save-message>+old<enter>"
 # Toggle the mailbox list with "y".
 macro index,pager y "<change-folder>?<toggle-mailboxes>" "show incoming mailboxes list"
 
-macro index,pager .c "<pipe-message>_cves | bscve<enter>" "output cves in message"
+macro index,pager ,c "<pipe-message>_cves | bscve<enter>" "output cves in message"
 
 bind browser y exit
