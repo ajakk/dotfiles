@@ -67,6 +67,11 @@
 
 (straight-use-package 'puppet-mode)
 
+(straight-use-package 'snakemake-mode)
+
+;; Emacs Speaks Statistics - for R
+(straight-use-package 'ess)
+
 ;; Web Dev
 (straight-use-package 'web-mode)
 (setq web-mode-enable-auto-closing t)
