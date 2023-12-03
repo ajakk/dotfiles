@@ -21,6 +21,7 @@
 	path = ~/gentoo/.gitconfig
 [include]
 	path = ~/.gitconfig-secrets
+	path = ~/.site.gitconfig
 [sendemail]
 	confirm = cc
 	smtpEncryption = tls
