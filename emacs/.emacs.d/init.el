@@ -154,6 +154,9 @@
 ;; mutt mail temporary files are mail
 (add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
 
+;; use snakemake for snake files
+(add-to-list 'auto-mode-alist '("\\.snake?\\'" . snakemake-mode))
+
 ;; desktop-save-mode doesn't work as one would expect for emacsclient
 ;; if something, for example, calls $EDITOR when $EDITOR is
 ;; emacsclient, we definitely don't want to (desktop-read), so only do
