@@ -8,3 +8,5 @@ set message_id_format = "<%z@posteo.net>"
 
 # doesn't work when restoring postponed
 send-hook '~A' 'set smtp_pass = "`pass Email/posteo.de/jchelmert3@posteo.net`"'
+
+cd ~/.mail/posteo
