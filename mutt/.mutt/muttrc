@@ -29,10 +29,11 @@ mailboxes \
   -label "posteo/Shopping" ~/.mail/posteo/Shopping\
   -label "posteo/Software Announce" "~/.mail/posteo/Software Announce" \
   -label "posteo/Tor" ~/.mail/posteo/Tor \
-  -label "posteo/US-CERT" ~/.mail/posteo/Security/US-CERT \
   -label "posteo/Wikipedia" ~/.mail/posteo/Wikipedia \
   -label "posteo/dev" ~/.mail/posteo/dev \
   -label "posteo/fulldisclosure" ~/.mail/posteo/Security/fulldisclosure \
+  -label "posteo/cve" ~/.mail/posteo/Security/cve-mails \
+  -label "posteo/CISA" ~/.mail/posteo/Security/CISA \
   -label "posteo/home" ~/.mail/posteo/home \
   -label "posteo/lists" ~/.mail/posteo/lists \
   -label "posteo/systemd-devel" ~/.mail/posteo/systemd-devel
