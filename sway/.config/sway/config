@@ -29,8 +29,13 @@ output * bg ~/.dotfiles/background.png fill
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
-output DP-5 resolution 2560x1440 position 0,0
+output DP-4 resolution 2560x1440 position 0,0
 output HDMI-A-1 resolution 3840x2160 position 2560,0 scale 1.2
+
+workspace 1 output HDMI-A-1
+workspace 2 output DP-4
+workspace 9 output DP-4
+workspace 10 output DP-4
 
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
@@ -259,11 +264,6 @@ for_window [title="Close tabs"] floating enable
 for_window [app_id="org.gnupg.pinentry-qt"] floating enable
 for_window [app_id="org.freedesktop.impl.portal.desktop.kde"] floating enable
 for_window [app_id="Alacritty"] opacity .9
-
-workspace 1 output DP-3
-workspace 2 output DP-1
-workspace 9 output DP-1
-workspace 10 output DP-1
 
 assign [app_id="alacritty-primary"] 1
 assign [app_id="firefox"] 2
