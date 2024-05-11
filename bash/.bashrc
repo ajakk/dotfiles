@@ -29,6 +29,7 @@ if [[ -d "${HOME}/.dotfiles/.git" ]] && [[ -n $(git -C ~/.dotfiles status -s) ]]
 	echo -e "[${RED}!!!${NC}] dotfiles need a commit or cleanup"
 fi
 
-if tmux ls 2>&1 > /dev/null; then
+# if tmux is running and we're not currently in a tmux session
+if tmux ls 2>&1 > /dev/null && [[ -z "${TMUX}" ]]; then
 	tmux attach
 fi
