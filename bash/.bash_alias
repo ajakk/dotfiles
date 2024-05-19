@@ -200,7 +200,7 @@ _genpod_base() {
            -it $@
 }
 
-alias ls='lsd -v --color=always'
+alias ls='ls -v --color=always'
 alias emacs='emacsclient -t'
 alias ncmpcpp="ALL_PROXY='127.0.0.1:8118' ncmpcpp"
 alias b='buku --suggest --np'
