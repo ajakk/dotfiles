@@ -30,6 +30,6 @@ if [[ -d "${HOME}/.dotfiles/.git" ]] && [[ -n $(git -C ~/.dotfiles status -s) ]]
 fi
 
 # if tmux is running and we're not currently in a tmux session
-if tmux ls 2>&1 > /dev/null && [[ -z "${TMUX}" ]]; then
+if tmux ls >/dev/null 2>&1 && [[ -z "${TMUX}" ]]; then
 	tmux attach
 fi
