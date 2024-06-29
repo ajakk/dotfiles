@@ -3,6 +3,11 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+export HISTSIZE=10000
+export HISTFILESIZE=-1
+export HISTTIMEFORMAT="[%F %T] "
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
 export GPG_TTY="$(tty)"
 export EDITOR="emacsclient -t"
 export LANG=en_US.UTF-8
