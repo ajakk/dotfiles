@@ -29,22 +29,15 @@ output * bg ~/.dotfiles/background.png fill
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
-output HDMI-A-1 resolution 3840x2160 position 2560,0 scale 1.2
+# specify the monitor names explicitly to avoid any problems with
+# unstable names
+output 'Samsung Electric Company U32J59x HCJR906432' resolution 3840x2160 position 2560,0 scale 1.2
+output 'Lenovo Group Limited LEN P27h-10 0x36305939' resolution 2560x1440 position 0,0
 
-output DP-4 resolution 2560x1440 position 0,0
-# DP names aren't stable so specify configuration for both potential names
-output DP-5 resolution 2560x1440 position 0,0
-
-workspace 1 output HDMI-A-1
-
-workspace 2 output DP-4
-workspace 9 output DP-4
-workspace 10 output DP-4
-
-# ditto, see above
-workspace 2 output DP-5
-workspace 9 output DP-5
-workspace 10 output DP-5
+workspace 1 output 'Samsung Electric Company U32J59x HCJR906432'
+workspace 2 output 'Lenovo Group Limited LEN P27h-10 0x36305939'
+workspace 9 output 'Lenovo Group Limited LEN P27h-10 0x36305939'
+workspace 10 output 'Lenovo Group Limited LEN P27h-10 0x36305939'
 
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
