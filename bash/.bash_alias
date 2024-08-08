@@ -253,4 +253,4 @@ alias genpod_musl='_genpod_base gentoo/stage3:musl'
 
 alias pass=gopass
 
-eval "$(command repo-cd --bash=rcd --path="~/gentoo/gentoo:default:.")"
+eval "$(command repo-cd --bash=rcd --path="~/gentoo/gentoo:default:." --run="pkgdev showkw --color=y")"
