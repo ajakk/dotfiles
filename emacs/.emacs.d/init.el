@@ -39,6 +39,13 @@
 (straight-use-package 'flycheck)
 (global-flycheck-mode)
 
+(setq-default flycheck-disabled-checkers
+              ;; yamllint is truth
+              '(yaml-actionlint
+                yaml-jsaml
+                yaml-ruby
+                yaml-jsyaml))
+
 ;; Gtags
 (straight-use-package 'gtags)
 (straight-use-package 'ggtags)
