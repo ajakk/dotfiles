@@ -65,8 +65,8 @@
 ;; *.gradle file mode
 (straight-use-package 'groovy-mode)
 
-;; CMake files
-(straight-use-package '(el-patch :type git :host github :repo "alamaison/emacs-cmake-project"))
+;; CMake files - provided by system package
+(require 'cmake-mode)
 
 (straight-use-package 'meson-mode)
 
