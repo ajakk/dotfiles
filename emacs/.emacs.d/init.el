@@ -87,9 +87,6 @@
 ;; COBOL
 (straight-use-package 'cobol-mode)
 
-(straight-use-package 'mu4e)
-(require 'mu4e)
-
 (straight-use-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
