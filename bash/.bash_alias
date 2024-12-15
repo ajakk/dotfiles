@@ -133,7 +133,7 @@ bs() {
 }
 
 qr() {
-	qrencode $1 -o - | feh -
+	qrencode $1 -o - | imv -
 }
 
 randchars() {
