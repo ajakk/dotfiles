@@ -191,13 +191,14 @@ zmv() {
 }
 
 _genpod_base() {
+    devrepo=$(realpath ~/gentoo/gentoo)
     nice -n 19 \
     ionice -c idle \
     podman run --cap-add=CAP_SYS_ADMIN,CAP_NET_ADMIN \
-           --volume /var/lib/jake/gentoo/gentoo:/var/db/repos/gentoo \
-           --volume /var/cache/distfiles:/var/cache/distfiles \
-           --pull=newer\
+           --volume ${devrepo}:/var/db/repos/gentoo \
+           --pull=newer \
            -it $@
+           # --volume /var/cache/distfiles:/var/cache/distfiles:O \
 }
 
 alias ls='ls -v --color=always'
