@@ -249,8 +249,8 @@ alias ta='tmux attach'
 
 alias mtr='mtr -t'
 
-alias genpod='_genpod_base -e "PORTAGE_BINHOST=https://binhost.ajak.xyz/znver1/" gentoo/stage3:latest'
-alias genpod_musl='_genpod_base gentoo/stage3:musl'
+alias genpod='_genpod_base -e "PORTAGE_BINHOST=https://binhost.ajak.xyz/znver1/" docker.io/gentoo/stage3:latest'
+alias genpod_musl='_genpod_base docker.io/gentoo/stage3:musl'
 
 alias pass=gopass
 
