@@ -6,6 +6,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/require")
 
+(require 'site-gentoo)
 (require 'straight)
 (require 'ui)
 
@@ -161,12 +162,10 @@
 ;; use snakemake for snake files
 (add-to-list 'auto-mode-alist '("\\.snake?\\'" . snakemake-mode))
 
-;; need to ensure magit (provides git-commit-mode) is initialized when
-;; editing commit messages
+;; need to ensure magit initialized when editing commit messages
 (add-to-list 'auto-mode-alist
-             '("/COMMIT_EDITMSG\\'" . (lambda ()
-                                        (require 'git-commit)
-                                        (git-commit-mode))))
+             '("COMMIT_EDITMSG\\'" . (lambda()
+                                       (require 'magit))))
 
 ;; desktop-save-mode doesn't work as one would expect for emacsclient
 ;; if something, for example, calls $EDITOR when $EDITOR is
