@@ -96,7 +96,7 @@
 (straight-use-package 'esup)
 (straight-use-package 'ansible)
 (straight-use-package 'yaml-mode)
-(add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
+(add-hook 'yaml-mode-hook #'(lambda () (ansible 1)))
 
 (straight-use-package 'evil)
 
