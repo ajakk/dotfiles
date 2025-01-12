@@ -157,7 +157,7 @@
 (add-to-list 'auto-mode-alist '("\\muttrc?\\'" . conf-mode))
 
 ;; mutt mail temporary files are mail
-(add-to-list 'auto-mode-alist '("/mutt" . mail-mode))
+(add-to-list 'auto-mode-alist '("/mutt-" . mail-mode))
 
 ;; use snakemake for snake files
 (add-to-list 'auto-mode-alist '("\\.snake?\\'" . snakemake-mode))
