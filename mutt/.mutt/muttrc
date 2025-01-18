@@ -22,21 +22,15 @@ set spoolfile = ~/.mail/posteo/INBOX
 mailboxes \
   -label "posteo/Accounts" ~/.mail/posteo/Accounts \
   -label "posteo/Bills" ~/.mail/posteo/Bills \
-  -label "posteo/Distro Security" "~/.mail/posteo/Security/Distro Security" \
   -label "posteo/Inbox" ~/.mail/posteo/INBOX \
   -label "posteo/Money" ~/.mail/posteo/Money \
   -label "posteo/Newsletters" ~/.mail/posteo/Newsletters \
   -label "posteo/Shopping" ~/.mail/posteo/Shopping\
   -label "posteo/Software Announce" "~/.mail/posteo/Software Announce" \
-  -label "posteo/Tor" ~/.mail/posteo/Tor \
   -label "posteo/Wikipedia" ~/.mail/posteo/Wikipedia \
   -label "posteo/dev" ~/.mail/posteo/dev \
   -label "posteo/fulldisclosure" ~/.mail/posteo/Security/fulldisclosure \
-  -label "posteo/cve" ~/.mail/posteo/Security/cve-mails \
-  -label "posteo/CISA" ~/.mail/posteo/Security/CISA \
-  -label "posteo/home" ~/.mail/posteo/home \
-  -label "posteo/lists" ~/.mail/posteo/lists \
-  -label "posteo/systemd-devel" ~/.mail/posteo/systemd-devel
+  -label "posteo/home" ~/.mail/posteo/home
 mailboxes \
   -label "gentoo/Inbox" ~/.mail/gentoo/INBOX \
   -label "gentoo/arm" ~/.mail/gentoo/arm \
