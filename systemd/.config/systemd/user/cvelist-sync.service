@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync cvelist repo
+
+[Service]
+Type=oneshot
+ExecStart=git -C /home/jake/git/cvelist pull --quiet
+
+[Install]
+WantedBy=multi-user.target

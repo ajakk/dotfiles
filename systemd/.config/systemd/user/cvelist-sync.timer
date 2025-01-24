@@ -1,0 +1,9 @@
+[Unit]
+Description=Sync cvelist repo hourly
+
+[Timer]
+OnBootSec=15m
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target
