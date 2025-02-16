@@ -195,6 +195,7 @@ _genpod_base() {
     nice -n 19 \
     ionice -c idle \
     podman run --cap-add=CAP_SYS_ADMIN,CAP_NET_ADMIN \
+           --volume /etc/portage/gnupg:/etc/portage/gnupg \
            --volume ${devrepo}:/var/db/repos/gentoo \
            --pull=newer \
            -it $@
